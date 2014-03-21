@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="content">
+	<name>Radio HTML5</name>
+	<author>Kritsanasak</author>
+	<creationDate>Feb 2014</creationDate>
+	<copyright>Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>roboconk@gmail.com</authorEmail>
+	<authorUrl>www.kritsanasak.blogspot.com</authorUrl>
+	<version>1.0</version>
+	<description>Display song with html5</description>
+	<files>
+		<filename plugin="radio5">radio5.php</filename>
+	</files>
+	<params/>
+</install>
