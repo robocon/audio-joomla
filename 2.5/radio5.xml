@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<install version="1.5" type="plugin" group="content">
+<extension version="3.1" type="plugin" group="content">
 	<name>Radio HTML5</name>
 	<author>Kritsanasak</author>
 	<creationDate>Mar 2014</creationDate>
@@ -11,5 +11,6 @@
 	<description>Display song with html5</description>
 	<files>
 		<filename plugin="radio5">radio5.php</filename>
+		<filename>index.html</filename>
 	</files>
-</install>
+</extension>

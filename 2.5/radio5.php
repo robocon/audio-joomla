@@ -1,42 +1,35 @@
 <?php
-defined( '_JEXEC' ) or die( 'Restricted access' );
+defined('_JEXEC') or die;
 
-jimport( 'joomla.plugin.plugin' );
-class plgContentRadio5 extends JPlugin
-{
-	public function plgContentRadio5( &$subject, $params ) {
-		parent::__construct( $subject, $params );
-	}
-
-	public function onPrepareContent( &$article, &$params, $limitstart ) {
-		global $mainframe;
+class PlgContentRadio5 extends JPlugin {
+	public function onContentPrepare($context, &$row, &$params, $page = 0) {
 
 		$pattern = '/({radio})(.+)({\/radio})/';
-		if(!empty($article->fulltext)){
+		if(!empty($row->fulltext)){
 
 			// Check fulltext has {radio} or not?
-			$match_count = preg_match_all($pattern, $article->fulltext, $match);
+			$match_count = preg_match_all($pattern, $row->fulltext, $match);
 			
 			if($match_count>0){
 				$replace = $this->setTag($match);
-				$article->fulltext = preg_replace($replace['pattern'], $replace['tag'], $article->fulltext);
+				$row->fulltext = preg_replace($replace['pattern'], $replace['tag'], $row->fulltext);
 			}
 		}
 
-		if(!empty($article->introtext)){
+		if(!empty($row->introtext)){
 
 			// Check introtext has {radio} or not?
-			$match_count = preg_match_all($pattern, $article->introtext, $match);
+			$match_count = preg_match_all($pattern, $row->introtext, $match);
 			if($match_count>0){
 				$replace = $this->setTag($match);
-				$article->introtext = preg_replace($replace['pattern'], $replace['tag'], $article->introtext);
+				$row->introtext = preg_replace($replace['pattern'], $replace['tag'], $row->introtext);
 			}
 		}
 
 		// Make sure replace text again.
-		$match_count = preg_match_all($pattern, $article->text, $match);
+		$match_count = preg_match_all($pattern, $row->text, $match);
 		$replace = $this->setTag($match);
-		$article->text = @preg_replace($replace['pattern'], $replace['tag'], $article->text);
+		$row->text = @preg_replace($replace['pattern'], $replace['tag'], $row->text);
 	}
 
 	private function setTag($items) {
